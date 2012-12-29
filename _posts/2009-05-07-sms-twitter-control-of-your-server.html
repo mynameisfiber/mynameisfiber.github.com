@@ -1,0 +1,391 @@
+---
+layout: post
+title: SMS/Twitter Control of your server
+date: 2009-05-07
+category : code
+tags : [code, python, twitter, sms, control, server]
+---
+
+  <div class='post'>
+    Well, I thought it was about time to post something, so let me
+    show you this little project I've been tinkering with. It
+    basically allows me to control my server with a cellphone. This
+    can be applied to any computer with python installed and can do
+    really anything (right now I have it search/download bittorrent
+    files).<br>
+    <br>
+    It basically works by creating a master thread on the server
+    that constantly checks some secured twitter account for
+    directed messages. This basically means that you can send a
+    directed message to some secured user through twitter from your
+    cell phone and when the computer reads this message it will act
+    on it.<br>
+    <br>
+    The following is the main code: it creates a main thread on the
+    computer listening for new messages. When a new message is
+    found, a new thread is created and the correct command is
+    executed (the commands are defined in the configuration file
+    which will come soon). The benefit to creating new threads is
+    that the task can be halted later by initiating a stop command
+    (the stop commands are hard programmed and are automatically
+    generated for each configuration defined command).<br>
+    <br>
+    
+    {% highlight python linenos %}
+#!/usr/bin/python
+#
+# Copyright 2008 Michael Gorelick (mynameisfiber[ait]gmail[dodt]com)
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see:
+# http://www.gnu.org/licenses/gpl.html.
+from __future__ import division
+
+'''A tool to allow for remote control of a machine with twitter'''
+
+__author__ = 'Michael G (mynameisfiber@gmail.com)'
+__version__ = '0.1'
+
+from sys import stdout
+import threading, time, twitter, re, ConfigParser, subprocess
+
+######### CONFIG FILE ##############
+configfile = 'twitcontrol.conf'
+
+class TwitThread(threading.Thread):
+  def __init__(self,actions,twitter,command):
+    threading.Thread.__init__(self)
+    self._stop = threading.Event()  #Set the hook for self.stop()
+    self.actions = actions
+    self.twitter = twitter
+    self.commandstruct = command
+    self.process = None
+
+  def run(self):
+    '''Finds what action is linked to the inputed command'''
+    command = self.commandstruct['text']
+    for name,contents in self.actions.iteritems():
+      found = contents['match'].match(command)
+      if found:
+        self.name = name
+        print "%s: %s: Starting"%(time.ctime(),name)
+        self.doCommand(found,command,contents)
+        return None
+      elif command.lower() == "stop %s"%name.lower():
+        self.name = "killthread-%s"%name
+        for thread in threading.enumerate():
+          if thread.name.lower() == name.lower():
+            print "%s: Killing %s"%(time.ctime(),name)
+            thread.stop()
+        return None
+
+  def doCommand(self,match,command,action):
+    '''Runs the command given by the config file for the given input'''
+    if action["output"] == "start":
+      self.message("%s: Started"%self.name)
+    print "Running command: %s"%(action["command"]%match.groupdict())
+    self.process = subprocess.Popen(action["command"]%match.groupdict(),\
+      stdin=None, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True)
+    #We use the following hack because Popen.wait() or Popen.interact() lock
+    #the process so we cannot kill it if another thread sends a self.stop()
+    while self.process.poll() == None:
+      time.sleep(1)
+    if action["output"] == "end":
+      self.message("%s: Done"%self.name)
+    if self.process.returncode != 0:
+      err = self.formatstd(self.process.stderr)
+      print "%s: %s: Error: %s"%(time.ctime(),self.name,err)
+      if action["output"] == "output":
+        self.message("%s: Error: %s"%(self.name,err))
+    else:
+      suc = self.formatstd(self.process.stdout)
+      print "%s: %s: Success: %s"%(time.ctime(),self.name,suc)
+      if action["output"] == "output":
+        self.message("%s: Success: %s"%(self.name,suc))
+
+  def formatstd(self,fd,maxsize=120):
+    '''Extracts and formats data from a datastream'''
+    return ", ".join([x.strip() for x in fd.readlines()])[:maxsize]
+
+  def message(self,msg):
+    '''Sends a tweet to the command sender truncated to 140 characters'''
+    self.twitter.PostDirectMessage(self.commandstruct['sender_id'],msg[:140])
+
+  def stop(self):
+    '''Stops the current thread and terminates any open processes'''
+    print "%s: %s: Thread Killed"%(time.ctime(),self.name)
+    self.process.terminate()
+    self._stop.set()
+
+  def stopped(self):
+    return self._stop.isSet()
+
+
+class TwitControl:
+  def __init__(self,actions,user,passwd,recieveID,timeout=5):
+    self.actions = actions
+    self.twitter = twitter.Api(username=user,password=passwd)
+    self.recieveID = recieveID
+    self.timeout = timeout
+
+  def getMessages(self):
+    '''Gets all directed messages from twitter from a given user'''
+    return [x.AsDict() for x in self.twitter.GetDirectMessages() \
+    if x.GetSenderId() == self.recieveID]
+
+  def start(self):
+    '''Checks for new messages and commands the threads'''
+    commands = self.getMessages()
+    numcommands = len(commands)
+    while True:
+      commands = self.getMessages()
+      print ".",; stdout.flush()
+      if len(commands) > numcommands:
+        for command in commands[0:len(commands)-numcommands]:
+          print "%s: MASTER: Found Command: %s"%(time.ctime(),command['text'])
+          TwitThread(self.actions,self.twitter,command).start()
+        numcommands = len(commands)
+      elif len(commands) < numcommands:
+        numcommands = len(commands)
+      time.sleep(self.timeout)
+
+if __name__ == '__main__':
+  configfd = ConfigParser.RawConfigParser()
+  configfd.read(configfile)
+  print "Reading config: %s" % configfile
+
+  username  = configfd.get('Connection', 'username')
+  password  = configfd.get('Connection', 'password')
+  recieveID = configfd.getint('Connection', 'recieveID')
+  if configfd.has_option('Connection', 'timeout'):
+    timeout = configfd.getint('Connection', 'timeout')
+  else:
+    timeout = 5
+
+  actions = {}
+  for section in configfd.sections():
+    if section == 'Connection':
+      continue
+    action = {}
+    action['match']   = re.compile(configfd.get(section,'match'))
+    action['command'] = configfd.get(section,'command')
+    action['output']  = configfd.get(section,'output')
+    actions.update({section:action})
+  print "Loaded modules: %s"%", ".join(actions.keys())
+
+  print "Listening to user: %s"%username
+  control = TwitControl(actions,username,password,recieveID,timeout)
+  control.start()
+{% endhighlight %}
+<br>
+    <br>
+    And the following is a sample from the configuration file:<br>
+    <br>
+    {% highlight python linenos %}
+# Copyright 2008 Michael Gorelick (mynameisfiber[ait]gmail[dodt]com)
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see:
+# http://www.gnu.org/licenses/gpl.html.
+
+[Connection]
+username = Secured Username
+password = Password of secured username
+recieveID = User ID of the command issuer
+
+[reverseSSH]
+match = reverse (?P<IP>(?:\d{1,3}\.?){4}) (?P<PORT>\d+)
+command = ssh -R %(PORT)s:localhost:22 %(IP)s
+output = start
+
+[Talk]
+match = say (?P<text>.+)
+command = flite -t "%(text)s"
+output = None
+
+[Bittorrent]
+match = bt (?P<search>.+)
+command = transmission-remote -a "`/home/fiber/projects/pyisohunt/pyisohunt.py -n 1 -s seeds -p '%%(url)s' %(search)s`"
+output = output
+{% endhighlight %}
+
+<br>
+    <br>
+    The commands use regex in order to extract keywords. So
+    basically, I can SMS 'd user say hello there' and my computer
+    will initiate the command `flite -t "hello there"` once it
+    receives it! I also have the output of each command regulated
+    by the 'output' parameter on each command. It can either notify
+    me when the command starts, when it ends, or it can send me the
+    output of the command (or, of course, none of the above).<br>
+    <br>
+    Now, the interesting part is the bittorrent section. Here I
+    send the keywords to another little program I made (really just
+    a bunch of regex and rss tricks... I'll include it at the end).
+    This program returns the URL of the highest seeded match to the
+    keywords from IsoHunt.com. This is sent to transmission and my
+    server starts downloading the torrent! (I use <a href=
+    "http://www.transmissionbt.com/">Transmission</a> for
+    bittorrent on my server with the Clutch web UI) So essentially,
+    if a friend recommends a movie (that is in the public domain,
+    of course ;) when I am out, I can tell my server to start
+    downloading it so it will be ready when I am home.<br>
+    <br>
+    Also, I can set my server to start a reverse-ssh connection to
+    any IP. This is great because I can keep my router locked down
+    but still connect to my server from the outside. Note: normally
+    this sets my server to set up a reverse connection to an
+    intermediary server so that everyone can be behind a firewall,
+    but I'd like to keep the location of this server unknown for
+    now.<br>
+    <br>
+    Finally, the following is the source for pyisohunt.py. It was a
+    true hack so don't expect clean code!<br>
+    {% highlight python linenos %}
+
+#!/bin/env python
+#
+# Copyright 2008 Michael Gorelick (mynameisfiber[ait]gmail[dodt]com)
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see:
+# http://www.gnu.org/licenses/gpl.html.
+
+import feedparser, re, getopt
+from sys import argv
+
+class pyisohunt:
+  def __init__(self, search,cat):
+    self.search = search
+    self.category = cat
+    self.isohunt = feedparser.parse( \
+      "http://isohunt.com/js/rss/%s?iht=%d"%(search.replace(" ","+"),cat))
+    self.results = self.parse(self.isohunt.entries)
+
+  def parse(self,entries):
+    results = []
+    findstats = re.compile(u"Size: (?P<size>[0-9.]+) MB, in (?P<files>[0-9]+) files")
+    findhealth = re.compile(u"Seeds: (?P<seeds>[0-9]+) \ \; \| \ \; Leechers: (?P<leechers>[0-9]+) \ \; \| \ \; Downloads: (?P<downloads>[0-9]+)\<")
+    fieldtype = {"size":float, "files":int, "seeds":int, "leechers":int, "downloads":int, "title":unicode,"url":str} 
+    for item in entries:
+      tmp = {}
+      tmp['title'] = item.title[:item.title.rfind('[')]
+      tmp['url'] = item.enclosures[0].href
+      tmp.update(findstats.search(item.summary_detail.value).groupdict())
+      tmp.update(findhealth.search(item.summary_detail.value).groupdict())
+      results.append(dict([(title,fieldtype[title](value)) for title,value in tmp.iteritems()]))
+    return results
+
+  def sort(self,key="seeds"):
+    return sorted(self.results,lambda x, y: y[key] - x[key])
+
+if __name__ == "__main__":
+  categories = {"all":-1,"video":1,"tv":3,"audio":2,"musicvideo":10,\
+                "game":4,"app":5,"pic":6,"anime":7,"comic":8,"book":9,\
+                "misc":0,"unclassified":11}
+  sortfields = ["size","files","seeds","leechers","downlads"]
+  help = """%s [-c category] [-s sort] [-n maxresults] search
+  Search through IsoHunt torrents on the commandline.  By Michael G.
+  -c  Category name. Can be: """ + ", ".join(categories.keys()) + """
+  -s  Sort field.  Can be: """ + ", ".join(sortfields) + """
+  -p  Print string (standard python printf notation... try with '-p ""' to see fields)
+  -n  Max number of results (Note: sort is applied before results are truncated\n"""
+
+  #Default valus
+  category = categories["all"]
+  sortfield = "seeds"
+  maxresults = None
+  printf = """Title: %(title)s
+  URL: %(url)s
+  Size: %(size)0.2f MB
+  Files: %(files)d
+  Seeds: %(seeds)d
+  Leechers: %(leechers)d
+  Downloads: %(downloads)d
+  """
+
+  try:
+    opts, args = getopt.getopt(argv[1:], "hc:s:n:p:")
+  except Exception:
+    print "Usage: " + help%argv[0]
+    exit(1)
+  errors = []
+  if args == []:
+    errors.append("Must have search terms!")
+  else:
+    search = " ".join(['"%s"'%x for x in args])
+  for o, a in opts:
+    if o == "-c":
+      try:
+        category = categories[a]
+      except KeyError:
+        errors.append("Invalid category")
+    elif o == "-p":
+      try:
+        printf = str(a)
+        test = a%{'files': 1, 'title': "1", 'url':"1",u'downloads': 1, u'leechers': 1, u'seeds': 1, u'size':1}
+        del test
+      except KeyError, e:
+        errors.append("Invalid printf string: Invalid Key: %s"%",".join(e))
+      except ValueError:
+        errors.append("Invalid print string")
+    elif o == "-s":
+      if not a in sortfields:
+        errors.append("Invalid sort field")
+      else:
+        sortfield = a
+    elif o == "-n":
+      try:
+        maxresults = int(a)
+      except ValueError:
+        errors.append("Invalid max number of results (must be integer)")
+    elif o == "-h":
+      print help%argv[0]
+      exit(0)
+  if errors != []:
+    print "Usage: " + help%argv[0] + "\n".join(errors)
+    exit(1)
+
+  results = pyisohunt(search,category)
+  for result in results.sort(sortfield)[:maxresults]:
+    if printf:
+      print printf%result
+    else:
+      print result
+{% endhighlight %}
+
+    <br>
+    Well, I don't really know what else to say about this... ask
+    questions and I'll be sure to give you more details than you
+    ever wanted!
+  </div>

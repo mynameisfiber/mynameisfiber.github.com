@@ -1,0 +1,135 @@
+---
+layout: post
+title: obama fever
+date: 2008-11-04
+category : code
+tags : [code, python, nasa, image]
+---
+
+
+  <div class='post'>
+    OBAMA WON! Truly a day to remember. So, in the spirit of
+    science funding not being slashed to death I am going to
+    release one of my first python scripts that downloads all
+    images off of the NASA Astronomy Picture of the Day (apod).<br>
+    <br>
+    I tried keeping the code commented so that it could also serve
+    as a good learning tool. One thing I'd like to include is some
+    way of saving the description of the image. This could be done
+    by saving it into a text file with the same filename as the
+    image, but I suspect there is a better way (using ImageMagick
+    to embed the information?). If you have an idea or preference,
+    post a comment! So, here it goes:<br>
+    <br>
+    {% highlight python linenos %}
+#!/bin/env python
+#
+# Copyright 2008 Michael Gorelick (mynameisfiber[ait]gmail[dodt]com)
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see:
+# http://www.gnu.org/licenses/gpl.html.
+
+import re, urllib, sys, os
+
+### Check/Do Help
+help = """NASA Image Getter - Michael G. (GPL 2008)
+./%s [-h] [imagepath]
+imagepath  - path to save images
+-h, --help - this help"""%sys.argv[0]
+
+if "-h" in sys.argv or "--help" in sys.argv:
+exit(help)
+elif len(sys.argv) == 1:
+print "Not enough program arguments"
+exit(help)
+
+### CONFIG
+allowedChars = '[-a-zA-Z0-9*:\'.,&amp;!?\(\)//\n"+;_ ]'
+allowedFiles = '[jpg|jpeg|png|gif|mov|avi|mpeg|mpg]'
+url = "http://antwrp.gsfc.nasa.gov/apod/archivepix.html"
+pbarwidth = 80
+try:
+imagePath = sys.argv[1]
+os.makedirs(imagePath)
+except Exception, e:
+#errno == 17 means the directory already exists.
+if e.errno != 17:
+ exit(e)
+print "Saving images to %s"%imagePath
+
+##############################################
+## This section looks for links to image pages
+print "Searching for image pages in", url
+html = urllib.urlopen(url).read()
+pagePattern = re.compile('([0-9]{6}).html">(' + allowedChars + '*)')
+pages = pagePattern.findall(html)
+totalpages = len(pages)
+print "Found", totalpages, "image pages."
+
+#############################################
+## Now we go to the pages and extract a list
+##  of images and download
+try:
+alreadyHave = open(imagePath + "/tracker.log").readlines()
+except IOError, e:
+alreadyHave = ""
+totalhave = len(alreadyHave)
+try:
+tracker = open(imagePath + "/tracker.log", 'a+')
+except IOError, e:
+exit(e)
+
+base = url[0:url.rfind('/')]
+imagePattern = re.compile('<a href="image/(' + allowedChars + '*.' + \
+allowedFiles + ')"', re.IGNORECASE)
+sanitizePattern = re.compile('[//\n\r\t]')
+imageGet = urllib.URLopener()
+
+for i, page in enumerate(pages):
+try:
+ if page[0]+"\n" not in alreadyHave:
+   #Extract information from image page
+   title = sanitizePattern.sub("", page[1])
+   currentpage = base + "/ap" + page[0] + ".html"
+   print "Getting " + title
+   content = urllib.urlopen(currentpage).read()
+   image = imagePattern.findall(content)
+
+   #Parse data
+   filename = imagePath + "/" + (title + \
+     image[0][image[0].rfind('.'):]).replace(" ","_")
+   print "\tFilename: " + filename
+   url = base + "/image/" + image[0]
+   print "\tURL: " + url
+
+   print "\n[" + "="*(pbarwidth*(i-totalhave)/(totalpages-totalhave)) \
+     +"@"+"="*(pbarwidth*(i-totalpages)/(totalhave-totalpages)-1)+"]",
+   sys.stdout.flush()
+
+   #Download
+   imageGet.retrieve(url, filename)
+   tracker.write(page[0] + "\n")
+
+   print "\r" + " "*(pbarwidth+2),"\r",
+   sys.stdout.flush()
+except IndexError, e:
+ print "\tImage not found\n"
+except IOError, e:
+ print "\t404 Error\n"
+
+tracker.close()
+print "Done"
+{% endhighlight %}
+
+  </div>

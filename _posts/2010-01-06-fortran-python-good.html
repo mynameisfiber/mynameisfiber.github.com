@@ -1,0 +1,176 @@
+---
+layout: post
+title: fortran + python = good
+tagline: using fortran within python for great speed!
+date: 2010-01-06
+category : code
+tags : [code, python, fortran, module, speed, hpc, high performance]
+---
+
+  <div class='post'>
+    So, after a long time working solely in <a href=
+    "http://en.wikipedia.org/wiki/Fortran">FORTRAN</a>, I decided
+    to try to find a way to use python to get the same things done.
+    I wanted to incorporate what I had done in FORTRAN as a library
+    that way I wouldn't have to recode much and could instead
+    continue developing (except now in the wonderful warmth of
+    python)<br>
+    <br>
+    The most successful method I tried was using f2py. What f2py
+    does is take in a FORTRAN module (see the tvd module below, for
+    example) and makes a python interface for it. What this means
+    is that you can import fortran code and run it at the the
+    speeds you would expect from compiled code!<br>
+    <br>
+    Let me first take you through <a href=
+    "http://www.blogger.com/post-edit.g?blogID=3366502883257825993&amp;postID=3040328901315897452#code">
+    the module</a>. You can see from the 'include "omp_lib.h"' that
+    I'm using <a href=
+    "http://openmp.org/wp/openmp-specifications/">openMP</a>. For
+    those that don't know, openMP is a great way of making any code
+    parallel on shared memory machines (ie: if you have a computer
+    with multiple cores or hyper-threading). The lines with
+    "!$OMP", called <a href=
+    "http://en.wikipedia.org/wiki/Directive_(programming)">pragmas</a>,
+    are in fact calls to openMP and effect to proceeding code. In
+    addition, I created a function called "set_num_threads" to
+    manually change the ammount of parallelization that is used by
+    the program (by default, the number of threads is equal to the
+    number of CPU's on the machine). A great thing about this
+    "!$OMP" convention is that, since ! designates a comment, you
+    can still compile and run this code without having openMP
+    enabled!<br>
+    <br>
+    Now, let's move on to <a href=
+    "http://www.scipy.org/F2py">f2py</a>! You can see every
+    subroutine (and function) has lines starting with "!f2py".
+    Similar to openMP, this is used to designate various options.
+    For example, the "!f2py threadsafe" tells python that the
+    function will be using various threads and that the gil
+    shouldn't be used. As a result, we cannot take in or return in
+    python objects (there are methods to take in <a href=
+    "http://cens.ioc.ee/projects/f2py2e/usersguide/index.html#call-back-arguments">
+    python callbacks</a> when not using threadsafe). The intent
+    option sets if a parameter is going to be inputed or outputted.
+    With intent, python knows how to interpret python input and
+    what should be given back as return values.<br>
+    <br>
+    So, let's look at the function set. It takes in, in python, u
+    and CFL. The other parameters are optional. In addition, you
+    can see that "dt" and "maxv" are inputs but are calculated in
+    the function. I did this little hack so that I can return
+    multiple values to python. So in the end, this function is
+    defined, in the python space, as "u, dt, maxv = step(u, cfl)".
+    The most beautiful part is that when passing u to this module
+    from python, u is a numpy array! Note that the other functions
+    that are called (namely, do[XYZ] are also defined in the
+    module, however for the sake of brevity they are not listed
+    below).<br>
+    <br>
+    In order to use this fortran module, we need to compile it with
+    f2py. The end result is a .so that can be imported into
+    fortran. I compiled this particular module with `f2py -c -m tvd
+    --f90flags="-fopenmp -lm " --opt="-O3 --ffast-math" -lgomp
+    --fcompiler=gnu95 tvd.f90` So, let's go through this. "-c"
+    tells f2py to look at the pragmas in the code in order to learn
+    how each function should be handled. "-m tvd" defined the name
+    of the resulting module. the --f90flags, as expected, dictate
+    the flags send to the FORTRAN compiler. I have chosen to use
+    openmp (not needed, by the way, with newer versions of GCC
+    where openMP is built-in) and libmath. opt sets the
+    optimization flags. -lgomp tells f2py to use openMP (this
+    redundancy seems necessary although I have a feeling that one
+    of my statements telling f2py to use openMP is redundant).
+    Finally, "fcompiler" tells f2py to use gfortran.<br>
+    <br>
+    Let's look at a little session with this module, as to
+    understand what f2py created. (I use <a href=
+    "http://ipython.scipy.org/">ipython</a> for its
+    tab-completion)<br>
+    <br>
+    {% highlight python linenos %}
+In [1]: import numpy
+
+In [2]: from tvd import tvd
+
+In [3]: u = numpy.random.random((4,100,100,100)) #create a random velocity field
+
+In [4]: u[0,:,:,:] = 1 #set density to 1 to avoid instabilities
+
+In [5]: %timeit output = tvd.step(u, 0.65)
+10 loops, best of 3: 704 ms per loop
+    {% endhighlight %}
+
+    <br>
+    Amazing! It takes <b>704ms</b> to evolve a 100x100x100
+    isothermal grid! Normal usage of this would be: `u, dt, maxv =
+    tvd.step(u, 0.65)`. One note, I write "from tvd import tvd"
+    because the first "tvd" represents the file and the second
+    "tvd" represents the FORTRAN module. If instead I had just
+    written tvd.f90 as a series of subroutines and not as a FORTRAN
+    module, I could have simply written "import tvd". Now, I can
+    get to doing real science instead of being swamped by the
+    inhuman syntax of FORTRAN (a language best spelled in all caps
+    to truly illustrate its crimes).<br>
+    <br>
+    And now, for the code... I'm leaving out the actual
+    computational part however I may release that in the near
+    future (comment if you'd like to see it!).<br>
+    <br>
+    <a name="code" id="code"></a><br>
+    {% highlight fortran linenos %}
+! FILENAME: tvd.f90
+MODULE tvd
+
+  implicit none
+  include "omp_lib.h"
+
+  DOUBLE PRECISION :: csound=1
+
+  CONTAINS
+
+  SUBROUTINE set_num_threads(n)
+    !f2py threadsafe
+    !f2py intent(in) n
+    INTEGER :: n
+    CALL OMP_SET_NUM_THREADS(n)
+  END SUBROUTINE set_num_threads
+
+  SUBROUTINE step(u, n, CFL, dt, maxv)
+    !f2py threadsafe
+    !f2py intent(in) u
+    !f2py intent(in) n
+    !f2py intent(in) CFL
+    !f2py intent(in), optional dt
+    !f2py intent(in), optional maxv
+    !f2py intent(out) :: u, dt, maxv
+    !f2py depend(u) n
+    INTEGER :: n, k
+    DOUBLE PRECISION, DIMENSION(4,n,n,n) :: u
+    DOUBLE PRECISION :: CFL, dt, maxv
+  
+    !$OMP PARALLEL DO shared(u) private(n,k) &amp;
+    !$OMP SCHEDULE(dynamic) REDUCTION(MAX:maxv)
+    DO k=1,n
+      maxv = max( maxval( abs(u(2,:,:,k)) / u(1,:,:,k) ), &amp;
+                  maxval( abs(u(3,:,:,k)) / u(1,:,:,k) ), &amp;
+                  maxval( abs(u(4,:,:,k)) / u(1,:,:,k) )  &amp;
+                )
+    END DO
+    !$OMP END PARALLEL DO
+  
+    !Calculate the timestep based on the courant condition
+    if (dt .eq. 0.0) dt = CFL / (csound+maxv)
+   
+    !perform strang splitting using the hydro only 2nd order
+    !TVD algorithm given by http://arxiv.org/abs/astro-ph/0305088
+    CALL doX(u,n,dt, maxv)
+     CALL doY(u,n,dt, maxv)
+      CALL doZ(u,n,dt, maxv)
+      CALL doZ(u,n,dt, maxv)
+     CALL doY(u,n,dt, maxv)
+    CALL doX(u,n,dt, maxv)
+  END subroutine step
+END MODULE
+    {% endhighlight %}
+  </div>

@@ -1,46 +1,27 @@
 ---
 layout: page
-title: Hello World!
-tagline: Supporting tagline
+title: micha.gd
+tagline: all micha all the time
 ---
 {% include JB/setup %}
 
-Read [Jekyll Quick Start](http://jekyllbootstrap.com/usage/jekyll-quick-start.html)
+<center>
+<img src="http://www.gravatar.com/avatar/df8d7dd89dc8eb1c9297355d86ec5c25.png?s=200" alt="Hi! I'm Micha">
+<br>
+<h2>I'm Micha.  I like programming, space, science and hot chocolates.</h2>
+</center>
 
-Complete usage and documentation available at: [Jekyll Bootstrap](http://jekyllbootstrap.com)
+# Github Projects
+* [forget table](http://micha.gd/forgettable/): a sweet redis based database that stores categorical distributions and forgets data smartly.
+* [cider-go](https://github.com/mynameisfiber/cider-go): redis proxy that allows you to use any redis client you want to talk to a cluster of redis servers with backup shards for great win.
+* [shell-config](https://github.com/mynameisfiber/Shell-Config): need awesome bash/zsh/vim/screen configurations? look no further!
+* [realtime streams](http://micha.gd/realtimestream/): learn about real time stream processing with bitly's [simplehttp](http://github.com/bitly/simplehttp) suite. do it.
+* [seamresize](https://github.com/mynameisfiber/seamresize): resize things smartly. toy project but still awesome.
+* [other stuff!](https://github.com/mynameisfiber/): venture into my github page and see what else there is
 
-## Update Author Attributes
-
-In `_config.yml` remember to specify your own data:
-    
-    title : My Blog =)
-    
-    author :
-      name : Name Lastname
-      email : blah@email.test
-      github : username
-      twitter : username
-
-The theme should reference these variables whenever needed.
-    
-## Sample Posts
-
-This blog contains sample posts which help stage pages and blog data.
-When you don't need the samples anymore just delete the `_posts/core-samples` folder.
-
-    $ rm -rf _posts/core-samples
-
-Here's a sample "posts list".
-
+# Blog Posts
 <ul class="posts">
   {% for post in site.posts %}
-    <li><span>{{ post.date | date_to_string }}</span> &raquo; <a href="{{ BASE_PATH }}{{ post.url }}">{{ post.title }}</a></li>
+    <li>[<code>{{ post.date | date: "%Y/%m/%d" }}</code>]<a href="{{ BASE_PATH }}{{ post.url }}">{{ post.title }}</a>{% if post.tagline %}: {{ post.tagline }} {% endif %}</li>
   {% endfor %}
 </ul>
-
-## To-Do
-
-This theme is still unfinished. If you'd like to be added as a contributor, [please fork](http://github.com/plusjade/jekyll-bootstrap)!
-We need to clean up the themes, make theme usage guides with theme-specific markup examples.
-
-
