@@ -107,7 +107,7 @@ a:hover {
 .bio {
     font-style: italic;
     line-height: 24px;
-    padding: 0 60px 0 10px;
+    padding-right: 60px;
 }
 
 /* Project styles */

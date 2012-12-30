@@ -40,10 +40,18 @@ tagline: all micha all the time
             </li>
             <li class="project">
                 <span class="project-name">
-                    <a href="https://github.com/mynameisfiber/Shell-Config">shell-config</a>
+                    <a href="http://dev.bitly.com/story_api.html">bitly story api</a>
                 </span>
                 <span class="project-desc">
-                    need awesome bash/zsh/vim/screen configurations? look no further!
+                    want to know what going on with a set of urls? this is thing for you!
+                </span>
+            </li>
+            <li class="project">
+                <span class="project-name">
+                    <a href="http://rt.ly/">bitly realtime</a>
+                </span>
+                <span class="project-desc">
+                    bad ass math and databases showing you what's happening on the internet
                 </span>
             </li>
             <li class="project">
@@ -52,6 +60,14 @@ tagline: all micha all the time
                 </span>
                 <span class="project-desc">
                     learn about real time stream processing with bitly's <a href="http://github.com/bitly/simplehttp">simplehttp</a> suite. do it.
+                </span>
+            </li>
+            <li class="project">
+                <span class="project-name">
+                    <a href="https://github.com/mynameisfiber/Shell-Config">shell-config</a>
+                </span>
+                <span class="project-desc">
+                    need awesome bash/zsh/vim/screen configurations? look no further!
                 </span>
             </li>
             <li class="project">
