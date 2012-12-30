@@ -32,7 +32,7 @@ h1 a {
 
 h2 {
     margin: 0 0 0 0;
-    padding: 15px 0;
+    padding: 15px 0 5px 0;
     color: #1d1d25;
     font-family: "Helvetica Neue", sans-serif;
     font-size: 20px;
@@ -132,7 +132,7 @@ a:hover {
     float: left;
     width: 589px;
     padding: 0 5px;
-    border-left: 1px solid black;
+    border-left: 1px solid #d8d8d8;
 }
 
 /* Blog summary styles */
@@ -159,7 +159,7 @@ a:hover {
     float: left;
     width: 589px;
     padding: 5px 5px;
-    border-left: 1px solid black;
+    border-left: 1px solid #d8d8d8;
 
     font-style: italic;
     color: #888;
@@ -176,7 +176,7 @@ a:hover {
     margin: 0 0 0 200px;
     padding-left: 25px;
     padding-top: 25px;
-    border-left: 1px solid black;
+    border-left: 1px solid #d8d8d8;
 }
 
 .post-title .title {
@@ -195,8 +195,8 @@ a:hover {
     padding: 0 5px 0 5px;
     margin-left: 20px;
 
-    border-left: 2px solid #aaa;
-    border-right: 2px solid #aaa;
+    border-left: 2px solid #666;
+    border-right: 2px solid #666;
 }
 
 .post-meta {
@@ -281,8 +281,8 @@ header {
     width: 150px;
     padding: 15px 30px 5px 20px;
     text-align: right;
-    border-right: 1px solid black;
-    border-top: 1px solid black;
+    border-right: 1px solid #d8d8d8;
+    border-top: 1px solid #d8d8d8;
 }
 
 .header-right {
@@ -293,13 +293,13 @@ header {
 
 section {
     clear: both;
-    border-top: 1px solid black;
+    border-top: 1px solid #d8d8d8;
 }
 
 .section-title {
     margin: 0 0 0 200px;
     padding-left: 25px;
-    border-left: 1px solid black;
+    border-left: 1px solid #d8d8d8;
 }
 
 .section-title .title {
@@ -312,7 +312,7 @@ section {
     width: 590px;
     margin: 0 0 0 200px;
     padding: 10px 0 10px 25px;
-    border-left: 1px solid black;
+    border-left: 1px solid #d8d8d8;
 }
 
 .section-right li {
@@ -335,7 +335,7 @@ footer {
     margin: 0 5px 0 0px;
     padding: 40px 0;
 
-    border-top: 1px solid black;
+    border-top: 1px solid #d8d8d8;
 
     margin-left:auto;
     margin-right:auto
