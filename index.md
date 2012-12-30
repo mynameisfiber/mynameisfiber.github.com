@@ -24,7 +24,7 @@ tagline: all micha all the time
         <ul>
             <li class="project">
                 <span class="project-name">
-                    <a href="//forgettable/">forget table</a>
+                    <a href="/forgettable/">forget table</a>
                 </span>
                 <span class="project-desc">
                     a sweet redis based database that stores categorical distributions and forgets data smartly.
@@ -48,7 +48,7 @@ tagline: all micha all the time
             </li>
             <li class="project">
                 <span class="project-name">
-                    <a href="//realtimestream/">realtime str</a>
+                    <a href="/realtimestream">realtime streams</a>
                 </span>
                 <span class="project-desc">
                     learn about real time stream processing with bitly's <a href="http://github.com/bitly/simplehttp">simplehttp</a> suite. do it.
@@ -67,7 +67,7 @@ tagline: all micha all the time
                     <a href="https://github.com/mynameisfiber/">other stuff!</a>
                 </span>
                 <span class="project-desc">
-                    venture into my github page and see what else there is
+                    venture into my github page and see what else there is.
                 </span>
             </li>
         </ul>
