@@ -51,7 +51,7 @@ tagline: all micha all the time
                     <a href="http://rt.ly/">bitly realtime</a>
                 </span>
                 <span class="project-desc">
-                    bad ass math and databases showing you what's happening on the internet
+                    bad ass math and databases showing you what's happening on the internet.
                 </span>
             </li>
             <li class="project">
@@ -76,6 +76,22 @@ tagline: all micha all the time
                 </span>
                 <span class="project-desc">
                     resize things smartly. toy project but still awesome.
+                </span>
+            </li>
+            <li class="project">
+                <span class="project-name">
+                    <a href="https://github.com/mynameisfiber/Outflow-Driven-Turbulence">outflow-driven turbulence</a>
+                </span>
+                <span class="project-desc">
+                    massively parallel code to see how new stars stir turbulence. read the <a href="https://github.com/mynameisfiber/Outflow-Driven-Turbulence/raw/master/doc/Writeup.pdf">paper</a>!
+                </span>
+            </li>
+            <li class="project">
+                <span class="project-name">
+                    <a href="https://github.com/mynameisfiber/Misc-Old-Projects">misc code</a>
+                </span>
+                <span class="project-desc">
+                    a github repo of some stuff I made before embracing git... enjoy!
                 </span>
             </li>
             <li class="project">
