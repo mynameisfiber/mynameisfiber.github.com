@@ -5,7 +5,11 @@ layout: default
 <section id="post">
     <div class="post-meta">
         <span class="post-date">{{ page.date | date: "%B %d, %Y" }}</span><br>
-        <span class="post-category">{{ page.category }}:</span><br>
+        {% if page.category %}
+            <span class="post-category">{{ page.category }}:</span><br>
+        {% elsif page.categories %}
+            <span class="post-category">{{ page.categories | array_to_sentence_string }}:</span><br>
+        {% endif %}
         <ul class="post-tags">
         {% for tag in page.tags %}
             <li class="post-tag">{{ tag }}</li>
