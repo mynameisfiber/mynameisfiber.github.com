@@ -1,6 +1,64 @@
 ---
 theme :
-  name : hooligan
+  name : micha
 ---
 {% include JB/setup %}
-{% include themes/hooligan/default.html %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>
+            {% if page.title %}
+            {{ page.title }} @
+            {% endif %}
+            {{ site.title }}
+        </title>
+        {% if page.description %}<meta name="description" content="{{ page.description }}">{% endif %}
+        <meta name="author" content="{{ site.author.name }}">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- HTML5 shim, for IE6-8 support of HTML elements -->
+        <!--[if lt IE 9]>
+        <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+
+
+        <link href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz:400,700" rel="stylesheet" type="text/css">
+        <link href='//fonts.googleapis.com/css?family=Fjalla+One' rel='stylesheet' type='text/css'>
+
+        <script type="text/javascript" src="//use.typekit.com/phg8fgl.js"></script>
+        <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+
+        <script src="{{ ASSET_PATH }}/js/jquery.min.js"></script>
+
+        <link href="{{ ASSET_PATH }}/css/normalize.css" rel="stylesheet" type="text/css" media="all">
+        <link href="{{ ASSET_PATH }}/css/syntax.css" rel="stylesheet" type="text/css" media="all">
+        <link href="{{ ASSET_PATH }}/css/style.css" rel="stylesheet" type="text/css" media="all">
+    </head>
+
+    <body>
+        <a href="https://github.com/mynameisfiber"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png" alt="Fork me on GitHub"></a>
+
+        <div class="container">
+            <header>
+            <div class="header-left">
+                <img src="http://www.gravatar.com/avatar/df8d7dd89dc8eb1c9297355d86ec5c25.png?s=100" alt="micha">
+            </div>
+            <div class="header-right">
+                <h1><a href="/">Micha Gorelick</a></h1>
+                <p class="header-tagline">
+                Programmer, builder &amp; astronaut
+                </p>
+            </div>
+            </header>
+
+            {{ content }}
+
+        <footer>
+            <p>
+                <a rel="license" href="http://creativecommons.org/licenses/by-nc/3.0/deed.en_US"><img alt="Creative Commons License" src="http://i.creativecommons.org/l/by-nc/3.0/80x15.png" /></a> 
+                This work by <a xmlns:cc="http://creativecommons.org/ns#" href="http://micha.gd/" property="cc:attributionName" rel="cc:attributionURL">Micha Gorelick</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc/3.0/deed.en_US">Creative Commons Attribution-NonCommercial 3.0 Unported License</a></p>
+        </footer>
+    </div> <!-- /container -->
+    {% include JB/analytics %}
+</body>
+</html>

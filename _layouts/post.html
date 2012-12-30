@@ -1,5 +1,29 @@
 ---
 layout: default
 ---
-{% include JB/setup %}
-{% include themes/hooligan/post.html %}
+
+<section id="post">
+    <div class="post-meta">
+        <span class="post-date">{{ page.date | date: "%B %d, %Y" }}</span><br>
+        <span class="post-category">{{ page.category }}:</span><br>
+        <ul class="post-tags">
+        {% for tag in page.tags %}
+            <li class="post-tag">{{ tag }}</li>
+        {% endfor %}
+        </ul>
+            
+    </div>
+    <div class="post-title">
+        <span class="title">{{ page.title }}</span><br>
+        {% if page.tagline %}
+            <span class="subtitle">{{ page.tagline }}</span><br>
+        {% endif %}
+    </div>
+    <div class="section-right">
+        {{ content }}
+    </div>
+</section>
+
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+

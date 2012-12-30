@@ -1,0 +1,354 @@
+/* Font styles */
+body {
+    background-color: #fffafa;
+    color: #333;
+    font-family: "abril-text", serif;
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 24px;
+    margin-top: 25px;
+}
+
+p {
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    margin: 0;
+    padding: 0;
+
+    color: #1d1d25;
+
+    font-family: "Fjalla One", sans-serif;
+    font-size: 40pt;
+    font-weight: normal;
+    letter-spacing: 3px;
+}
+
+h1 a {
+    color: inherit !important;
+}
+
+h2 {
+    margin: 0 0 0 0;
+    padding: 15px 0;
+    color: #1d1d25;
+    font-family: "Helvetica Neue", sans-serif;
+    font-size: 20px;
+    font-weight: 200;
+}
+
+small {
+    font-size: 11px;
+    color: #888;
+}
+
+.header-tagline {
+    margin: 0;
+    padding: 15px 0 0 25px;
+    font-family: "Helvetica Neue", sans-serif;
+    font-size: 15pt;
+    font-weight: 200;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+a {
+    color: #67ad00;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #7fd600;
+}
+
+.btn {
+    color: #1d1d25;
+    padding: 5px 10px;
+    border: 1px solid #888;
+    border-bottom-color: #666;
+    text-shadow: 0 1px 1px rgba(255,255,255,.3);
+    text-align: center;
+
+    -webkit-border-radius: 4px;
+       -moz-border-radius: 4px;
+            border-radius: 4px;
+
+    background-color: #67ad00;
+    background-image: -moz-linear-gradient(top, #7fd600, #67ad00);
+    background-image: -ms-linear-gradient(top, #7fd600, #67ad00);
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#7fd600), to(#67ad00));
+    background-image: -webkit-linear-gradient(top, #7fd600, #67ad00);
+    background-image: -o-linear-gradient(top, #7fd600, #67ad00);
+    background-image: linear-gradient(top, #7fd600, #67ad00);
+    background-repeat: repeat-x;
+    filter: e(%("progid:DXImageTransform.Microsoft.gradient(startColorstr='%d', endColorstr='%d', GradientType=0)",#7fd600, #67ad00));
+
+    -webkit-box-shadow: inset 0 1px 0 rgba(255,255,255,.2), 0 1px 2px rgba(0,0,0,.05);
+       -moz-box-shadow: inset 0 1px 0 rgba(255,255,255,.2), 0 1px 2px rgba(0,0,0,.05);
+            box-shadow: inset 0 1px 0 rgba(255,255,255,.2), 0 1px 2px rgba(0,0,0,.05);
+}
+
+.btn:hover {
+    color: #1d1d25;
+    text-shadow: 0 1px 1px rgba(255,255,255,.75);
+    -webkit-box-shadow: inset 0 1px 5px rgba(0,0,0,.3), 0 1px 2px rgba(0,0,0,.05);
+       -moz-box-shadow: inset 0 1px 5px rgba(0,0,0,.3), 0 1px 2px rgba(0,0,0,.05);
+            box-shadow: inset 0 1px 5px rgba(0,0,0,.3), 0 1px 2px rgba(0,0,0,.05);
+}
+
+/* Bio styles */
+
+.bio {
+    font-style: italic;
+    line-height: 24px;
+    padding: 0 60px 0 10px;
+}
+
+/* Project styles */
+
+.project {
+    line-height: 32px;
+}
+
+.project-name {
+    display: inline-block;
+    float: left;
+    width: 190px;
+    margin: 0 5px;
+    padding: 0;
+    text-align: right;
+    font-style: italic;
+    font-weight: bold;
+}
+
+.project-desc {
+    display: inline-block;
+    float: left;
+    width: 589px;
+    padding: 0 5px;
+    border-left: 1px solid black;
+}
+
+/* Blog summary styles */
+
+.blog-entry {
+    clear: both;
+}
+
+.blog-date {
+    display: inline-block;
+    float: left;
+    width: 190px;
+    padding-top: 5px;
+    margin: 0 5px;
+
+    text-align: right;
+    line-height: 24px;
+    font-size: 14px;
+    font-style: italic;
+}
+
+.blog-desc {
+    display: inline-block;
+    float: left;
+    width: 589px;
+    padding: 5px 5px;
+    border-left: 1px solid black;
+
+    font-style: italic;
+    color: #888;
+    line-height: 24px;
+}
+
+.blog-title {
+    font-weight: bold;
+}
+
+/* The post */
+
+.post-title {
+    margin: 0 0 0 200px;
+    padding-left: 25px;
+    padding-top: 25px;
+    border-left: 1px solid black;
+}
+
+.post-title .title {
+    color: #1d1d25;
+    font-family: "Yanone Kaffeesatz", sans-serif;
+    font-size: 36px;
+    font-weight: normal;
+}
+
+.post-title .subtitle {
+    color: #aaa;
+    font-family: "Yanone Kaffeesatz", sans-serif;
+    font-size: 16px;
+    font-weight: normal;
+
+    padding: 0 5px 0 5px;
+    margin-left: 20px;
+
+    border-left: 2px solid #aaa;
+    border-right: 2px solid #aaa;
+}
+
+.post-meta {
+    float: left;
+    width: 145px;
+    margin: 25px 0px;
+    padding: 0 0 0 50px;
+
+    font-style: italic;
+}
+
+.post-meta .post-category {
+    font-size: 16px;
+}
+
+.post-meta .post-date {
+    line-height: 24px;
+    font-size: 11px;
+    font-weight: bold;
+    color: #888;
+}
+
+.post-meta .post-tags {
+    list-style-type: square;
+    list-style-position: inside;
+    padding-left: 10px;
+}
+.post-meta .post-tag {
+    text-size: 11px;
+}
+
+/* Comments */
+
+.comment-date {
+    display: inline-block;
+    float: left;
+    width: 190px;
+    margin: 0 5px;
+    padding: 0;
+    text-align: right;
+    line-height: 24px;
+    font-size: 11px;
+    font-weight: bold;
+    font-style: italic;
+}
+
+.comment-body {
+    display: inline-block;
+    float: left;
+    width: 590px;
+    margin: 0 5px 15px 5px;
+    line-height: 24px;
+}
+
+.comment-body a {
+    font-style: italic;
+    font-weight: bold;
+}
+
+.comment {
+    padding: 0;
+    margin: 0;
+}
+
+#leave-comment {
+    padding-top: 25px;
+}
+
+/* Skeleton */
+
+.container {
+    width: 800px;
+    margin: 0 auto;
+}
+
+header {
+    margin-top: 25px;
+}
+
+.header-left {
+    float: left;
+    width: 160px;
+    padding: 15px 20px 5px 20px;
+    text-align: right;
+    border-right: 1px solid black;
+    border-top: 1px solid black;
+}
+
+.header-right {
+    float: left;
+    width: 539px;
+    padding: 40px 0 0 15px;
+}
+
+section {
+    clear: both;
+    border-top: 1px solid black;
+}
+
+.section-title {
+    margin: 0 0 0 200px;
+    padding-left: 25px;
+    border-left: 1px solid black;
+}
+
+.section-title .title {
+    font-family: "Helvetica Neue", sans-serif;
+    font-size: 32px;
+    font-weight: 200;
+}
+
+.section-right {
+    width: 590px;
+    margin: 0 0 0 200px;
+    padding: 10px 0 10px 25px;
+    border-left: 1px solid black;
+}
+
+.section-right li {
+    padding-left: 30px;
+    list-style: circle;
+    list-style-position: inside;
+}
+
+.section-body {
+    margin: 0 0 0 0;
+}
+
+
+.clearfix {
+    clear: both !important;
+}
+
+footer {
+    clear: both;
+    margin: 0 5px 0 0px;
+    padding: 40px 0;
+
+    border-top: 1px solid black;
+
+    margin-left:auto;
+    margin-right:auto
+}
+
+footer p {
+    padding: 0;
+    margin: 0;
+    margin-bottom: 5px;
+
+
+    text-align: center;
+    font-size: 11px;
+    color: #888;
+    font-style: italic;
+}

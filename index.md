@@ -1,27 +1,95 @@
 ---
-layout: page
+layout: default
 title: micha.gd
 tagline: all micha all the time
 ---
-{% include JB/setup %}
 
-<center>
-<img src="http://www.gravatar.com/avatar/df8d7dd89dc8eb1c9297355d86ec5c25.png?s=200" alt="Hi! I'm Micha">
-<br>
-<h2>I'm Micha.  I like programming, space, science and hot chocolates.</h2>
-</center>
+<section id="about">
+    <div class="section-right offset">
+        <p class="bio">
+            I'm a former NYU physics/astronomy grad student and current 
+            data science engineer at <a href="//bit.ly">bitly</a>. I 
+            spend my days moving data at light speed and my nights 
+            crusading against bad code.  I also like building and coffee.
+        </p>
+    </div>
+</section>
 
-# Github Projects
-* [forget table](http://micha.gd/forgettable/): a sweet redis based database that stores categorical distributions and forgets data smartly.
-* [cider-go](https://github.com/mynameisfiber/cider-go): redis proxy that allows you to use any redis client you want to talk to a cluster of redis servers with backup shards for great win.
-* [shell-config](https://github.com/mynameisfiber/Shell-Config): need awesome bash/zsh/vim/screen configurations? look no further!
-* [realtime streams](http://micha.gd/realtimestream/): learn about real time stream processing with bitly's [simplehttp](http://github.com/bitly/simplehttp) suite. do it.
-* [seamresize](https://github.com/mynameisfiber/seamresize): resize things smartly. toy project but still awesome.
-* [other stuff!](https://github.com/mynameisfiber/): venture into my github page and see what else there is
 
-# Blog Posts
-<ul class="posts">
-  {% for post in site.posts %}
-    <li>[<code>{{ post.date | date: "%Y/%m/%d" }}</code>]<a href="{{ BASE_PATH }}{{ post.url }}">{{ post.title }}</a>{% if post.tagline %}: {{ post.tagline }} {% endif %}</li>
-  {% endfor %}
-</ul>
+<section id="projects">
+    <div class="section-title">
+        <h2>Projects</h2>
+    </div>
+    <div class="section-body">
+        <ul>
+            <li class="project">
+                <span class="project-name">
+                    <a href="//forgettable/">forget table</a>
+                </span>
+                <span class="project-desc">
+                    a sweet redis based database that stores categorical distributions and forgets data smartly.
+                </span>
+            </li>
+            <li class="project">
+                <span class="project-name">
+                    <a href="https://github.com/mynameisfiber/cider-go">cider-go</a>
+                </span>
+                <span class="project-desc">
+                    use any redis client to talk to a cluster of redis servers with redundant shards for great win.
+                </span>
+            </li>
+            <li class="project">
+                <span class="project-name">
+                    <a href="https://github.com/mynameisfiber/Shell-Config">shell-config</a>
+                </span>
+                <span class="project-desc">
+                    need awesome bash/zsh/vim/screen configurations? look no further!
+                </span>
+            </li>
+            <li class="project">
+                <span class="project-name">
+                    <a href="//realtimestream/">realtime str</a>
+                </span>
+                <span class="project-desc">
+                    learn about real time stream processing with bitly's <a href="http://github.com/bitly/simplehttp">simplehttp</a> suite. do it.
+                </span>
+            </li>
+            <li class="project">
+                <span class="project-name">
+                    <a href="https://github.com/mynameisfiber/seamresize">seamresize</a>
+                </span>
+                <span class="project-desc">
+                    resize things smartly. toy project but still awesome.
+                </span>
+            </li>
+            <li class="project">
+                <span class="project-name">
+                    <a href="https://github.com/mynameisfiber/">other stuff!</a>
+                </span>
+                <span class="project-desc">
+                    venture into my github page and see what else there is
+                </span>
+            </li>
+        </ul>
+    </div>
+</section>
+
+<section id="blog">
+    <div class="section-title">
+        <h2>Writing</h2>
+    </div>
+    <div class="section-body">
+        <ul class="post-list">
+            {% for post in site.posts %}
+                <li class="blog-entry">
+                    <span class="blog-date">
+                        {{ post.date | date: "%B %e, %Y" }}
+                    </span>
+                    <span class="blog-desc">
+                        <a href="{{ BASE_PATH }}{{ post.url }}" class="blog-title">{{ post.title }}</a>{% if post.tagline %} &mdash; {{ post.tagline }} {% endif %}
+                    </span>
+                </li>
+            {% endfor %} 
+        </ul>
+    </div>
+</section>
