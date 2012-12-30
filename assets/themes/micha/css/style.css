@@ -278,8 +278,8 @@ header {
 
 .header-left {
     float: left;
-    width: 160px;
-    padding: 15px 20px 5px 20px;
+    width: 150px;
+    padding: 15px 30px 5px 20px;
     text-align: right;
     border-right: 1px solid black;
     border-top: 1px solid black;
