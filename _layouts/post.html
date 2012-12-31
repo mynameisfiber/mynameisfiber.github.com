@@ -7,18 +7,30 @@ theme :
 <section id="post">
     <div class="post-meta">
         <span class="post-date">{{ page.date | date: "%B %d, %Y" }}</span><br>
+
+        <div class="meta-title">
         {% if page.category %}
-            <span class="post-category">{{ page.category }}:</span><br>
+            <a href="/categories.html#{{ page.category }}-ref">{{ page.category }}</a>:
         {% elsif page.categories %}
-            <span class="post-category">{{ page.categories | array_to_sentence_string }}:</span><br>
+            {% for category in page.categories %}
+            <a href="/categories.html#{{ category }}-ref">{{ category }}</a>{% case forloop.rindex0 %}{% when 1 %} and {% when 0 %}:{% else %}, {% endcase %}
+            {% endfor %}
         {% endif %}
-        <ul class="post-tags">
+        </div>
+        <ul>
         {% for tag in page.tags %}
-            <li class="post-tag">{{ tag }}</li>
+            <li>{{ tag }}</li>
         {% endfor %}
         </ul>
-            
+
+        <div class="meta-title">similar posts:</div>
+        <ul>
+        {% for sp in site.related_posts limit:5 offset:1 %}
+            <li><a href="{{ sp.url }}">{{ sp.title }}</a></li>
+        {% endfor %}
+        </ul>
     </div>
+
     <div class="post-title">
         <span class="title" id="post-title">{{ page.title }}</span><br>
         {% if page.tagline %}
@@ -29,7 +41,10 @@ theme :
         {{ content }}
     </div>
 </section>
-
 <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
+<section id="comments">
+    <div class="comments" id="disqus_thread"></div>
+</section>
 
+{% include JB/comments %}

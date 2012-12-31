@@ -2,3 +2,15 @@
 layout: default
 ---
 {% include JB/setup %}
+
+<section id="page-content">
+    <div class="post-title">
+        <span class="title" id="post-title">{{ page.title }}</span><br>
+        {% if page.tagline %}
+            <span class="subtitle" id="post-tagline">{{ page.tagline }}</span><br>
+        {% endif %}
+    </div>
+    <div class="section-right">
+        {{ content }}
+    </div>
+</section>

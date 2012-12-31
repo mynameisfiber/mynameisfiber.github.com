@@ -11,7 +11,7 @@ album_id : 5644216957565050033
 ---
 
 As you know, I recently moved to a new place (and built myself a
-[desk!](/projects/building/2011/09/10/desk-building/)), but now it's time to
+[desk]({% post_url 2011-09-10-desk-building %})!), but now it's time to
 have a bed!  One thing I considered when designing this bed was how little
 space I had and how every inch is precious.  As a result, this bed as an
 extraordinary amount of storage underneath and, although it is built like a

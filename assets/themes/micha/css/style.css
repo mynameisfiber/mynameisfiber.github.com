@@ -67,6 +67,10 @@ a:hover {
     color: #7fd600;
 }
 
+a:visited {
+    color: #00D100;
+}
+
 .btn {
     color: #1d1d25;
     padding: 5px 10px;
@@ -201,68 +205,37 @@ a:hover {
 
 .post-meta {
     float: left;
-    width: 145px;
+    width: 160px;
     margin: 25px 0px;
-    padding: 0 0 0 50px;
+    padding: 0 0 0 25px;
 
     font-style: italic;
 }
 
-.post-meta .post-category {
+.post-meta .meta-title {
+    margin-top: 20px;
     font-size: 16px;
 }
 
 .post-meta .post-date {
-    line-height: 24px;
-    font-size: 11px;
+    font-size: 18px;
     font-weight: bold;
     color: #888;
 }
 
-.post-meta .post-tags {
+.post-meta ul {
     list-style-type: square;
-    list-style-position: inside;
-    padding-left: 10px;
+    list-style-position: outside;
+    padding-left: 25px;
 }
-.post-meta .post-tag {
+.post-meta li {
     text-size: 11px;
 }
 
 /* Comments */
 
-.comment-date {
-    display: inline-block;
-    float: left;
-    width: 190px;
-    margin: 0 5px;
-    padding: 0;
-    text-align: right;
-    line-height: 24px;
-    font-size: 11px;
-    font-weight: bold;
-    font-style: italic;
-}
-
-.comment-body {
-    display: inline-block;
-    float: left;
-    width: 590px;
-    margin: 0 5px 15px 5px;
-    line-height: 24px;
-}
-
-.comment-body a {
-    font-style: italic;
-    font-weight: bold;
-}
-
-.comment {
-    padding: 0;
-    margin: 0;
-}
-
-#leave-comment {
-    padding-top: 25px;
+.comments {
+    padding: 40px;
 }
 
 /* Skeleton */
@@ -316,9 +289,9 @@ section {
 }
 
 .section-right li {
-    padding-left: 30px;
+    margin-left: 35px;
     list-style: circle;
-    list-style-position: inside;
+    list-style-position: outside;
 }
 
 .section-right p {
