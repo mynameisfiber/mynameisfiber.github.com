@@ -18,7 +18,7 @@ tagline: all micha all the time
 
 <section id="projects">
     <div class="section-title">
-        <h2>Projects</h2>
+        <h2>code <small>&mdash; the things that have been keeping me busy on the computer</small></h2>
     </div>
     <div class="section-body">
         <ul>
