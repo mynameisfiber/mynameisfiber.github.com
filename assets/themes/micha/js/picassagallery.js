@@ -1,3 +1,6 @@
+// Picassa gallery viewer code thingie made by Micha Gorelick
+// (http://micha.gd/)
+//
 // Requires prototype
 // (https://ajax.googleapis.com/ajax/libs/prototype/1.7.1.0/prototype.js)
 
