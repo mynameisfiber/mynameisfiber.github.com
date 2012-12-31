@@ -321,6 +321,11 @@ section {
     list-style-position: inside;
 }
 
+.section-right p {
+    text-indent: 1.5em;
+    margin: 1em;
+}
+
 .section-body {
     margin: 0 0 0 0;
 }
@@ -364,6 +369,12 @@ footer p {
     box-shadow: 0px 0px 12px #222;
 }
 
+.figure video {
+    float: left;
+    width: 100%;
+    box-shadow: 0px 0px 12px #222;
+}
+
 .figure .caption {
     clear: both;
 
@@ -371,8 +382,8 @@ footer p {
     text-align: center;
 
     margin: 0 0 0 2.5%;
-    padding: 5px 0;
-    width: 95%;
+    padding: 5px 2.5%;
+    width: 90%;
     background-color: #eee;
 
     border-bottom-right-radius: 10px;

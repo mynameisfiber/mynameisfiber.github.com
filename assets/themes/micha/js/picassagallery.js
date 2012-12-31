@@ -3,24 +3,26 @@
 
 image_template = "<div class='figure'><a href='#{url}'><img src='#{thumbnail}'></a><div class='caption'>#{caption}</div></div>\n";
 
+video_template = '<div class="figure"><video controls preload="metadata" src="#{url}"><a href="#{url}"><img src="#{thumbnail}"></a></video><div class="caption">#{caption} [video]</div></div>\n';
+
 function generate_album(data) {
     var content = $("content");
-    console.log(content);
     var entries = data.feed.entry;
-    console.log("Found entries: ", entries);
     for (var i=0; i < entries.length; i++) {
+        var values = {};
         var item = entries[i].media$group;
-        image = {};
+        var mediacontent = item.media$content.last();
+        var thumbnails = item.media$thumbnail.last();
 
-        console.log(item.media$content);
-        image.url = item.media$content[0].url;
-        thumbnails = item.media$thumbnail;
-        image.thumbnail = thumbnails.last().url;
-        image.caption = item.media$description.$t;
+        values.url = mediacontent.url;
+        values.thumbnail = thumbnails.url;
+        values.caption = item.media$description.$t;
 
-        console.log("Found image: ", image);
-        console.log("Generating HTML: ", image_template.interpolate(image));
-        content.innerHTML += image_template.interpolate(image);
+        if (mediacontent.medium == "video") {
+            content.innerHTML += video_template.interpolate(values);
+        } else if (mediacontent.medium == "image") {
+            content.innerHTML += image_template.interpolate(values);
+        }
     }
 }
 
