@@ -108,11 +108,12 @@ tagline: all micha all the time
 
 <section id="blog">
     <div class="section-title">
-        <h2>Writing</h2>
+        <h2>blog <small>&mdash; full writeups on awesome projects</small></h2> 
     </div>
     <div class="section-body">
         <ul class="post-list">
             {% for post in site.posts %}
+                {% if post.type == "blog" %}
                 <li class="blog-entry">
                     <span class="blog-date">
                         {{ post.date | date: "%B %e, %Y" }}
@@ -121,6 +122,29 @@ tagline: all micha all the time
                         <a href="{{ BASE_PATH }}{{ post.url }}" class="blog-title">{{ post.title }}</a>{% if post.tagline %} &mdash; {{ post.tagline }} {% endif %}
                     </span>
                 </li>
+                {% endif %}
+            {% endfor %} 
+        </ul>
+    </div>
+</section>
+
+<section id="blerb">
+    <div class="section-title">
+        <h2>blerb <small>&mdash; short and sweet... mainly galleries or quick how-to's</small></h2>
+    </div>
+    <div class="section-body">
+        <ul class="post-list">
+            {% for post in site.posts %}
+                {% if post.type == "blerb" %}
+                <li class="blog-entry">
+                    <span class="blog-date">
+                        {{ post.date | date: "%B %e, %Y" }}
+                    </span>
+                    <span class="blog-desc">
+                        <a href="{{ BASE_PATH }}{{ post.url }}" class="blog-title">{{ post.title }}</a>{% if post.tagline %} &mdash; {{ post.tagline }} {% endif %}
+                    </span>
+                </li>
+                {% endif %}
             {% endfor %} 
         </ul>
     </div>

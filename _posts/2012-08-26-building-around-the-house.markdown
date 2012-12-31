@@ -1,5 +1,6 @@
 ---
 layout: gallery
+type: blerb
 title: building around the house
 tagline: rope + pipe + wood = home
 date: 2012-08-26

@@ -1,5 +1,6 @@
 ---
 layout: gallery
+type: blerb
 title: glowing heart
 tagline: over engineering a simple t-shirt
 date: 2012-08-19

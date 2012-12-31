@@ -1,5 +1,6 @@
 ---
 layout: gallery
+type: blerb
 title: walking with giants
 tagline: roaming with NERSC computers
 date: 2011-07-24

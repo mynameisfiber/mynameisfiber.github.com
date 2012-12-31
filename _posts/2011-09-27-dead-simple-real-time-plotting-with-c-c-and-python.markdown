@@ -1,5 +1,6 @@
 ---
 layout: post
+type: blog
 title: Dead Simple Real Time Plotting with C/C++ and Python
 tagline: plotting in a pinch
 date: 2011-09-27

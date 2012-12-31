@@ -1,5 +1,6 @@
 ---
 layout: gallery
+type: blerb
 title: sleeping on clouds
 tagline: going from sleeping on the floor to a nice and sturdy bed
 date: 2011-09-10
@@ -16,7 +17,7 @@ space I had and how every inch is precious.  As a result, this bed as an
 extraordinary amount of storage underneath and, although it is built like a
 tank, it disassembles very easily for when I move (edit: I have since moved and
 the bed came apart easily, disassembled into compact pieces and was reassembled
-in <1h).
+in &lt;1h).
 
 Unfortunatly, I didn't take pictures for most of the process, but here's what I
 did take... enjoy!

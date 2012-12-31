@@ -1,5 +1,6 @@
 ---
 layout: gallery
+type: blerb
 title: desk building
 tagline: from tree to desk in no time flat
 date: 2011-09-10
