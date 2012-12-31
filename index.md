@@ -80,6 +80,14 @@ tagline: all micha all the time
             </li>
             <li class="project">
                 <span class="project-name">
+                    <a href="http://astro.physics.nyu.edu/~mjg490/">academic page</a>
+                </span>
+                <span class="project-desc">
+                    my old site from grad school... chock full of fun code in what I thought was a website.
+                </span>
+            </li>
+            <li class="project">
+                <span class="project-name">
                     <a href="https://github.com/mynameisfiber/Outflow-Driven-Turbulence">outflow-driven turbulence</a>
                 </span>
                 <span class="project-desc">
