@@ -1,0 +1,10 @@
+---
+layout: gallery
+title: test
+tagline: turning a cheap webcam into a telescope camera
+date: 2008-10-22
+categories : [projects, telescope]
+tags : [telescope, camera, build, howto]
+album_username : mynameisfiber
+album_id : 5644216957565050033
+---

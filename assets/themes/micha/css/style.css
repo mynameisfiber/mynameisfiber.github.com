@@ -352,3 +352,36 @@ footer p {
     color: #888;
     font-style: italic;
 }
+
+.figure {
+    width: 85%;
+    margin: 20px 0 80px 40px;
+}
+
+.figure img {
+    float: left;
+    width: 100%;
+    box-shadow: 0px 0px 12px #222;
+}
+
+.figure .caption {
+    clear: both;
+
+    font-family: "abril-text", serif;
+    text-align: center;
+
+    margin: 0 0 0 2.5%;
+    padding: 5px 0;
+    width: 95%;
+    background-color: #eee;
+
+    border-right: 1px solid black;
+    border-bottom: 1px solid black;
+    border-left: 1px solid black;
+
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+
+    box-shadow: 0px 0px 6px #222;
+}
+

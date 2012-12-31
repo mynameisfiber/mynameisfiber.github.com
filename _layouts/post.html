@@ -1,7 +1,9 @@
 ---
 layout: default
+theme :
+  name : micha
 ---
-
+{% include JB/setup %}
 <section id="post">
     <div class="post-meta">
         <span class="post-date">{{ page.date | date: "%B %d, %Y" }}</span><br>
@@ -18,12 +20,12 @@ layout: default
             
     </div>
     <div class="post-title">
-        <span class="title">{{ page.title }}</span><br>
+        <span class="title" id="post-title">{{ page.title }}</span><br>
         {% if page.tagline %}
-            <span class="subtitle">{{ page.tagline }}</span><br>
+            <span class="subtitle" id="post-tagline">{{ page.tagline }}</span><br>
         {% endif %}
     </div>
-    <div class="section-right">
+    <div class="section-right" id="content">
         {{ content }}
     </div>
 </section>
