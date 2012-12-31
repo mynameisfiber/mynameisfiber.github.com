@@ -375,10 +375,6 @@ footer p {
     width: 95%;
     background-color: #eee;
 
-    border-right: 1px solid black;
-    border-bottom: 1px solid black;
-    border-left: 1px solid black;
-
     border-bottom-right-radius: 10px;
     border-bottom-left-radius: 10px;
 
