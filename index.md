@@ -113,7 +113,6 @@ tagline: all micha all the time
     <div class="section-body">
         <ul class="post-list">
             {% for post in site.posts %}
-                {% if post.layout == "post" %}
                 <li class="blog-entry">
                     <span class="blog-date">
                         {{ post.date | date: "%B %e, %Y" }}
@@ -122,7 +121,6 @@ tagline: all micha all the time
                         <a href="{{ BASE_PATH }}{{ post.url }}" class="blog-title">{{ post.title }}</a>{% if post.tagline %} &mdash; {{ post.tagline }} {% endif %}
                     </span>
                 </li>
-                {% endif %}
             {% endfor %} 
         </ul>
     </div>
