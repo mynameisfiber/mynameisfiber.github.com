@@ -1,7 +1,7 @@
 ---
 layout: post
 type: blerb
-title: hadoop < *
+title: hadoop &lt; *
 tagline: how not to design a system
 date: 2013-01-14
 categories : [code]
