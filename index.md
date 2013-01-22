@@ -24,7 +24,7 @@ tagline: all micha all the time
         <ul>
             <li class="project">
                 <span class="project-name">
-                    <a href="/forgettable/">forget table</a>
+                    <a href="http://bitly.github.com/forgettable/">forget table</a>
                 </span>
                 <span class="project-desc">
                     a sweet redis based database that stores categorical distributions and forgets data smartly.
