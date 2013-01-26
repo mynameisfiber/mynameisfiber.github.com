@@ -249,10 +249,27 @@ header {
     margin-top: 25px;
 }
 
+.social {
+    padding-top: 25px;
+    text-align: left;
+}
+
+.social a{
+    font-family: "Fjalla One", sans-serif;
+    color: #ccc;
+    font-size: 20px;
+    font-weight: normal;
+    letter-spacing: 3px;
+}
+
+.social a:hover {
+    color: #444;
+}
+
 .header-left {
     float: left;
-    width: 150px;
-    padding: 15px 30px 5px 20px;
+    width: 135px;
+    padding: 15px 45px 5px 20px;
     text-align: right;
     border-right: 1px solid #d8d8d8;
     border-top: 1px solid #d8d8d8;
@@ -260,8 +277,12 @@ header {
 
 .header-right {
     float: left;
-    width: 539px;
-    padding: 40px 0 0 15px;
+    padding: 40px 20px 0 25px;
+}
+
+.site-title {
+    border-right: 5px solid black;
+    padding-right: 15px;
 }
 
 section {
