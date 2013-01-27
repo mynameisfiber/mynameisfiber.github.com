@@ -10,7 +10,7 @@ tags : [code, python, plot, C, hack, tutorial]
 
 ## Concepts
 * Standard [input](http://en.wikipedia.org/wiki/Standard_streams#Standard_input_.28stdin.29)/[output](http://en.wikipedia.org/wiki/Standard_streams#Standard_output_.28stdout.29) (Think: the input and output of your program)
-* [Unix Pipes](http://en.wikipedia.org/wiki/Pipeline_(Unix))
+* [Unix Pipes](http://en.wikipedia.org/wiki/Pipeline_(Unix)
 * [Plotting in matplotlib](http://lmgtfy.com/?q=pylab+tutorial)
 
 ## The Hack 
