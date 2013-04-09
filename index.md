@@ -24,6 +24,22 @@ tagline: all micha all the time
         <ul>
             <li class="project">
                 <span class="project-name">
+                    <a href="http://github.com/mynameisfiber/gocountme/">go count me</a>
+                </span>
+                <span class="project-desc">
+                    a leveldb backed k-min values database to store and compare large sets
+                </span>
+            </li>
+            <li class="project">
+                <span class="project-name">
+                    <a href="http://github.com/mynameisfiber/countmemaybe/">count me maybe</a>
+                </span>
+                <span class="project-desc">
+                    python explorations of probabilistic distinct value estimation and hash entropy
+                </span>
+            </li>
+            <li class="project">
+                <span class="project-name">
                     <a href="http://bitly.github.com/forgettable/">forget table</a>
                 </span>
                 <span class="project-desc">
