@@ -9,21 +9,20 @@ tags : [code, python, nasa, image]
 ---
 
 
-  <div class='post'>
-    OBAMA WON! Truly a day to remember. So, in the spirit of
-    science funding not being slashed to death I am going to
-    release one of my first python scripts that downloads all
-    images off of the NASA Astronomy Picture of the Day (apod).<br>
-    <br>
-    I tried keeping the code commented so that it could also serve
-    as a good learning tool. One thing I'd like to include is some
-    way of saving the description of the image. This could be done
-    by saving it into a text file with the same filename as the
-    image, but I suspect there is a better way (using ImageMagick
-    to embed the information?). If you have an idea or preference,
-    post a comment! So, here it goes:<br>
-    <br>
-    {% highlight python linenos %}
+OBAMA WON! Truly a day to remember. So, in the spirit of
+science funding not being slashed to death I am going to
+release one of my first python scripts that downloads all
+images off of the NASA Astronomy Picture of the Day (apod).
+
+I tried keeping the code commented so that it could also serve
+as a good learning tool. One thing I'd like to include is some
+way of saving the description of the image. This could be done
+by saving it into a text file with the same filename as the
+image, but I suspect there is a better way (using ImageMagick
+to embed the information?). If you have an idea or preference,
+post a comment! So, here it goes:
+
+{% highlight python linenos %}
 #!/bin/env python
 #
 # Copyright 2008 Michael Gorelick (mynameisfiber[ait]gmail[dodt]com)
@@ -133,5 +132,3 @@ except IOError, e:
 tracker.close()
 print "Done"
 {% endhighlight %}
-
-  </div>
