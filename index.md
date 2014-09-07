@@ -7,9 +7,9 @@ tagline: all micha all the time
 <section id="about">
     <div class="section-right offset">
         <p class="bio">
-            I'm a former NYU physics/astronomy grad student and current 
-            data science engineer at <a href="//bit.ly">bitly</a>. I 
-            spend my days moving data at light speed and my nights 
+            I'm a former NYU physics/astronomy grad student and current mad
+            data scientist at <a href="//fastforwardlabs.com">fast forward
+            labs</a>. I spend my days moving data at light speed and my nights
             crusading against bad code.  I also like building and coffee.
         </p>
     </div>
