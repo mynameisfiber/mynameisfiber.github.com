@@ -9,8 +9,11 @@ tagline: all micha all the time
         <p class="bio">
             I'm a former NYU physics/astronomy grad student and current mad
             data scientist at <a href="//fastforwardlabs.com">fast forward
-            labs</a>. I spend my days moving data at light speed and my nights
-            crusading against bad code.  I also like building and coffee.
+            labs</a> and author of <a
+            href=""http://shop.oreilly.com/product/0636920028963.do>High
+            Performance Python</a>. I spend my days moving data at light speed
+            and my nights crusading against bad code.  I also like building and
+            coffee.
         </p>
     </div>
 </section>
@@ -22,6 +25,14 @@ tagline: all micha all the time
     </div>
     <div class="section-body">
         <ul>
+            <li class="project">
+                <span class="project-name">
+                    <a href="http://shop.oreilly.com/product/0636920028963.do">high performance python</a>
+                </span>
+                <span class="project-desc">
+                    a book all about how to make your python code run at the speed of light
+                </span>
+            </li>
             <li class="project">
                 <span class="project-name">
                     <a href="http://github.com/mynameisfiber/gocountme/">go count me</a>
