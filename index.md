@@ -21,7 +21,7 @@ tagline: all micha all the time
 
 <section id="projects">
     <div class="section-title">
-        <h2>code <small>&mdash; the things that have been keeping me busy on the computer</small></h2>
+        <h2>projects <small>&mdash; the things that have been keeping me busy on the computer</small></h2>
     </div>
     <div class="section-body">
         <ul>
@@ -31,6 +31,14 @@ tagline: all micha all the time
                 </span>
                 <span class="project-desc">
                     a book all about how to make your python code run at the speed of light
+                </span>
+            </li>
+            <li class="project">
+                <span class="project-name">
+                    <a href="https://github.com/mynameisfiber/gohll">gohll</a>
+                </span>
+                <span class="project-desc">
+                    HLL++ implementation in go for amazing probabilistic set operations with ease
                 </span>
             </li>
             <li class="project">
