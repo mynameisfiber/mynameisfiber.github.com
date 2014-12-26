@@ -10,7 +10,7 @@ tagline: all micha all the time
             I'm a former NYU physics/astronomy grad student and current mad
             data scientist at <a href="//fastforwardlabs.com">fast forward
             labs</a> and author of <a
-            href=""http://shop.oreilly.com/product/0636920028963.do>High
+            href="http://shop.oreilly.com/product/0636920028963.do">High
             Performance Python</a>. I spend my days moving data at light speed
             and my nights crusading against bad code.  I also like building and
             coffee.
