@@ -207,9 +207,6 @@ There are two versions, one in Go (for super speed) and the other in Python.
 The code is open source and up on Github, available at
 [http://bitly.github.com/forgettable](http://bitly.github.com/forgettable).
 
-As always, if you like what you see (or feel the need to make improvements),
-don't forget that [bitly is hiring!](https://bitly.com/pages/jobs).
-
 Get ready for more posts on science at bitly, and If you have any specific
 questions, feel free to ping me on twitter
 [@mynameisfiber](http://twitter.com/mynameisfiber/).
