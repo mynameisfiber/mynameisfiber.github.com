@@ -1,6 +1,6 @@
 ---
 layout: default
-title: micha.gd
+title: micha.codes
 tagline: all micha all the time
 ---
 
