@@ -5,7 +5,7 @@ permalink: /:categories/:year/:month/:day/:title
 excerpt_separator: ""
 exclude: [".rvmrc", ".rbenv-version", "README.md", "Rakefile", "changelog.md"]
 auto: true
-highlighter: 'pygments'
+highlighter: 'rouge'
 lsi: false # DAMN YOU GITHUB!
 
 # Themes are encouraged to use these universal variables 
