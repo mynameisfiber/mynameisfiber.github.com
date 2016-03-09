@@ -8,6 +8,9 @@ categories : [projects, code]
 tags : [python, hack, bytecode, performance]
 ---
 
+> (This is a cross post from the [fast forward labs
+> blog](http://blog.fastforwardlabs.com/post/117173339298/bytecode-hacking-for-great-justice))
+
 As an exercise into learning more about python 2.7 bytecode, I wanted to
 implement the thing that pythonistas [love to hate][guido] - tail call
 optimization! This isn't [novel][rubber] at all, but I chose to implement this
@@ -25,7 +28,7 @@ call to itself.  This is different than normal recursion where multiple things
 can be happening on our recursed return statement.  So, for example, this is
 tail recursion,
 
-```
+```python
 def factorial(N, result=1):
     if N == 1:
         return 1
@@ -34,7 +37,7 @@ def factorial(N, result=1):
 
 While this is not,
 
-```
+```python
 def factorial(N):
     if N == 1:
         return 1
@@ -59,7 +62,7 @@ beginning!
 One way of doing this is manually unravelling the recursion.  For our example
 above, the factorial would become,
 
-```
+```python
 def factorial(N, result=1):
     while True:
         if N == 1:
@@ -79,7 +82,7 @@ this by re-writing the bytecode of the function itself.  Let's start by looking
 at the actual bytecode of the `factorial` function using the `dis` module from
 the standard library.
 
-```
+```python
 >>> dis.dis(factorial)
 # bytecode                                             # relevant python
 # -----------------------------------------------------#---------------------
@@ -121,7 +124,7 @@ looking at [opcodes][] this starts to make just as much sense as python itself!
 In an ideal world, what would we want this bytecode to look like? Looking up
 the references on `JUMP_ABSOLUTE`, we can rewrite the above bytecode to be,
 
-```
+```python
   2     >>    0 LOAD_FAST                0 (N)
               3 LOAD_CONST               1 (1)
               6 COMPARE_OP               2 (==)

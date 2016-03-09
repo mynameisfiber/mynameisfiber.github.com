@@ -9,5 +9,5 @@ theme :
 {{ content }}
 
 <script src="https://ajax.googleapis.com/ajax/libs/prototype/1.7.1.0/prototype.js"></script>
-<script src="{{ ASSET_PATH }}/js/picassagallery.js"></script>
+<script src="{{ site.url }}/js/picassagallery.js"></script>
 <script src="https://picasaweb.google.com/data/feed/api/user/{{ page.album_username }}/albumid/{{ page.album_id }}?alt=json-in-script&callback=generate_album&imgmax=d&thumbsize=512" defer></script>
