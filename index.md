@@ -30,7 +30,7 @@ tagline: all micha all the time
                     <a href="http://iamadatapoint.com/">Quantified Self</a>
                 </span>
                 <span class="project-desc">
-                    an immersive play that uses your internet presence to explore data use
+                    an immersive play that uses your internet presence to explore the effects and implications of data
                 </span>
             </li>
             <li class="project">
