@@ -27,6 +27,14 @@ tagline: all micha all the time
         <ul>
             <li class="project">
                 <span class="project-name">
+                    <a href="http://iamadatapoint.com/">Quantified Self</a>
+                </span>
+                <span class="project-desc">
+                    an immersive play that uses your internet presence to explore data use
+                </span>
+            </li>
+            <li class="project">
+                <span class="project-name">
                     <a href="http://shop.oreilly.com/product/0636920028963.do">high performance python</a>
                 </span>
                 <span class="project-desc">
