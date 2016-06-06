@@ -27,6 +27,14 @@ tagline: all micha all the time
         <ul>
             <li class="project">
                 <span class="project-name">
+                    <a href="/talk_summarization">Summarization Talk</a>
+                </span>
+                <span class="project-desc">
+                    a talk about how to use computers to summarize text (press 'p' for the notes)
+                </span>
+            </li>
+            <li class="project">
+                <span class="project-name">
                     <a href="http://iamadatapoint.com/">Quantified Self</a>
                 </span>
                 <span class="project-desc">
