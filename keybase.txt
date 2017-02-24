@@ -1,0 +1,54 @@
+==================================================================
+https://keybase.io/mynameisfiber
+--------------------------------------------------------------------
+
+I hereby claim:
+
+  * I am an admin of http://micha.codes
+  * I am mynameisfiber (https://keybase.io/mynameisfiber) on keybase.
+  * I have a public key ASBkDfJJ05VdHc03nmm0n4gbzRLER35ToQa0Szku72m3bQo
+
+To do so, I am signing this object:
+
+{
+    "body": {
+        "key": {
+            "eldest_kid": "0120640df249d3955d1dcd379e69b49f881bcd12c4477e53a106b44b392eef69b76d0a",
+            "host": "keybase.io",
+            "kid": "0120640df249d3955d1dcd379e69b49f881bcd12c4477e53a106b44b392eef69b76d0a",
+            "uid": "1ecf1a7667e31530bb53017683f6db19",
+            "username": "mynameisfiber"
+        },
+        "service": {
+            "hostname": "micha.codes",
+            "protocol": "http:"
+        },
+        "type": "web_service_binding",
+        "version": 1
+    },
+    "client": {
+        "name": "keybase.io go client",
+        "version": "1.0.18"
+    },
+    "ctime": 1487963088,
+    "expire_in": 504576000,
+    "merkle_root": {
+        "ctime": 1487963070,
+        "hash": "7c89a4feea331cab03f1a62d16e2931a3493327d93e8973b567ccdee83c00efb6d2f6bc3c4c7096a2572a65c6138defb8538ccad52e6370fa8f5027efdeda47f",
+        "seqno": 921323
+    },
+    "prev": "bd220b1a05b132ba1aae13a977b141cf3ed9c31a9a99c1022a2491a3bb0619f9",
+    "seqno": 8,
+    "tag": "signature"
+}
+
+which yields the signature:
+
+hKRib2R5hqhkZXRhY2hlZMOpaGFzaF90eXBlCqNrZXnEIwEgZA3ySdOVXR3NN55ptJ+IG80SxEd+U6EGtEs5Lu9pt20Kp3BheWxvYWTFAvd7ImJvZHkiOnsia2V5Ijp7ImVsZGVzdF9raWQiOiIwMTIwNjQwZGYyNDlkMzk1NWQxZGNkMzc5ZTY5YjQ5Zjg4MWJjZDEyYzQ0NzdlNTNhMTA2YjQ0YjM5MmVlZjY5Yjc2ZDBhIiwiaG9zdCI6ImtleWJhc2UuaW8iLCJraWQiOiIwMTIwNjQwZGYyNDlkMzk1NWQxZGNkMzc5ZTY5YjQ5Zjg4MWJjZDEyYzQ0NzdlNTNhMTA2YjQ0YjM5MmVlZjY5Yjc2ZDBhIiwidWlkIjoiMWVjZjFhNzY2N2UzMTUzMGJiNTMwMTc2ODNmNmRiMTkiLCJ1c2VybmFtZSI6Im15bmFtZWlzZmliZXIifSwic2VydmljZSI6eyJob3N0bmFtZSI6Im1pY2hhLmNvZGVzIiwicHJvdG9jb2wiOiJodHRwOiJ9LCJ0eXBlIjoid2ViX3NlcnZpY2VfYmluZGluZyIsInZlcnNpb24iOjF9LCJjbGllbnQiOnsibmFtZSI6ImtleWJhc2UuaW8gZ28gY2xpZW50IiwidmVyc2lvbiI6IjEuMC4xOCJ9LCJjdGltZSI6MTQ4Nzk2MzA4OCwiZXhwaXJlX2luIjo1MDQ1NzYwMDAsIm1lcmtsZV9yb290Ijp7ImN0aW1lIjoxNDg3OTYzMDcwLCJoYXNoIjoiN2M4OWE0ZmVlYTMzMWNhYjAzZjFhNjJkMTZlMjkzMWEzNDkzMzI3ZDkzZTg5NzNiNTY3Y2NkZWU4M2MwMGVmYjZkMmY2YmMzYzRjNzA5NmEyNTcyYTY1YzYxMzhkZWZiODUzOGNjYWQ1MmU2MzcwZmE4ZjUwMjdlZmRlZGE0N2YiLCJzZXFubyI6OTIxMzIzfSwicHJldiI6ImJkMjIwYjFhMDViMTMyYmExYWFlMTNhOTc3YjE0MWNmM2VkOWMzMWE5YTk5YzEwMjJhMjQ5MWEzYmIwNjE5ZjkiLCJzZXFubyI6OCwidGFnIjoic2lnbmF0dXJlIn2jc2lnxECrU5aDQAP9KDbAPzvkPwYbwlIAEna7E7j3wr0VR8ir7pbxqqFT24Xj+LxJ4XAbvnVQe5Q7/HMdhQpRnVhLC08HqHNpZ190eXBlIKRoYXNogqR0eXBlCKV2YWx1ZcQg03tuf8/eWR0aWMu+WsaYkr+hixjD4MSHU5X2Ks8EmUujdGFnzQICp3ZlcnNpb24B
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/mynameisfiber
+
+==================================================================
