@@ -27,7 +27,7 @@ tagline: all micha all the time
         <ul>
             <li class="project">
                 <span class="project-name">
-                    <a href="/talk_summarization">Summarization Talk</a>
+                    <a href="/http://micha.codes/2017-qcon-deeplearning/">Summarization Talk</a>
                 </span>
                 <span class="project-desc">
                     a talk about how to use computers to summarize text (press 'p' for the notes)
@@ -43,7 +43,7 @@ tagline: all micha all the time
             </li>
             <li class="project">
                 <span class="project-name">
-                    <a href="http://shop.oreilly.com/product/0636920028963.do">high performance python</a>
+                    <a href="http://shop.oreilly.com/product/0636920268505.do">high performance python 2e</a>
                 </span>
                 <span class="project-desc">
                     a book all about how to make your python code run at the speed of light
