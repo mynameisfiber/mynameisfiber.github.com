@@ -27,7 +27,7 @@ tagline: all micha all the time
         <ul>
             <li class="project">
                 <span class="project-name">
-                    <a href="/http://micha.codes/2017-qcon-deeplearning/">Summarization Talk</a>
+                    <a href="/2017-qcon-deeplearning/">Summarization Talk</a>
                 </span>
                 <span class="project-desc">
                     a talk about how to use computers to summarize text (press 'p' for the notes)
