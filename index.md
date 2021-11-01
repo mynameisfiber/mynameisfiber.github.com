@@ -7,13 +7,14 @@ tagline: all micha all the time
 <section id="about">
     <div class="section-right offset">
         <p class="bio">
-            I'm a former NYU physics/astronomy grad student and current mad
-            data scientist at <a href="//fastforwardlabs.com">fast forward
-            labs</a> and author of <a
-            href="http://shop.oreilly.com/product/0636920028963.do">High
-            Performance Python</a>. I spend my days moving data at light speed
-            and my nights crusading against bad code.  I also like building and
-            coffee.
+            Former NYU physics/astronomy mad data scientist at 
+            <a href="//fastforwardlabs.com">fast forward labs</a> and author of 
+            <a href="https://www.oreilly.com/library/view/high-performance-python/9781492055013/">High
+            Performance Python</a>. Currently screaming at mean people at 
+            <a href="https://occrp.org">@occrp</a> and
+            <a href="https://themarkup.org">@the-markup</a>. I spend my days
+            moving data at light speed and my nights crusading against bad
+            code. I also like building things and bikes. she/her.
         </p>
     </div>
 </section>

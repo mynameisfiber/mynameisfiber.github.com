@@ -211,4 +211,4 @@ Get ready for more posts on science at bitly, and If you have any specific
 questions, feel free to ping me on twitter
 [@mynameisfiber](http://twitter.com/mynameisfiber/).
 
-<div class="postmeta"> by <a href="http://micha.gd/">micha gorelick</a></div>
+<div class="postmeta"> by <a href="http://micha.codes/">micha gorelick</a></div>
