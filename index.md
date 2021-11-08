@@ -7,7 +7,7 @@ tagline: all micha all the time
 <section id="about">
     <div class="section-right offset">
         <p class="bio">
-            Former NYU physics/astronomy mad data scientist at 
+            Former mad data scientist at 
             <a href="//fastforwardlabs.com">fast forward labs</a> and author of 
             <a href="https://www.oreilly.com/library/view/high-performance-python/9781492055013/">High
             Performance Python</a>. Currently screaming at mean people at 
@@ -128,14 +128,6 @@ tagline: all micha all the time
                 </span>
                 <span class="project-desc">
                     resize things smartly. toy project but still awesome.
-                </span>
-            </li>
-            <li class="project">
-                <span class="project-name">
-                    <a href="http://astro.physics.nyu.edu/~mjg490/">academic page</a>
-                </span>
-                <span class="project-desc">
-                    my old site from grad school... chock full of fun code in what I thought was a website.
                 </span>
             </li>
             <li class="project">
