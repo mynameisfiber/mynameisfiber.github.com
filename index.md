@@ -9,8 +9,8 @@ tagline: all micha all the time
         <p class="bio">
             Former mad data scientist at 
             <a href="//fastforwardlabs.com">fast forward labs</a> and author of 
-            <a href="https://www.oreilly.com/library/view/high-performance-python/9781492055013/">High
-            Performance Python</a>. Currently screaming at mean people at 
+            <a href="http://shop.oreilly.com/product/0636920268505.do">High
+            Performance Python</a>. Currently screaming at mean people from the podium at 
             <a href="https://occrp.org">@occrp</a> and
             <a href="https://themarkup.org">@the-markup</a>. I spend my days
             moving data at light speed and my nights crusading against bad
@@ -26,6 +26,14 @@ tagline: all micha all the time
     </div>
     <div class="section-body">
         <ul>
+            <li class="project">
+                <span class="project-name">
+                    <a href="https://themarkup.org/series/citizen-browser">Citizen Browser</a>
+                </span>
+                <span class="project-desc">
+                    Using crowd-sourced data to investigate Facebook
+                </span>
+            </li>
             <li class="project">
                 <span class="project-name">
                     <a href="/2017-qcon-deeplearning/">Summarization Talk</a>
