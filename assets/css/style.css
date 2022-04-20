@@ -71,6 +71,13 @@ a:visited {
     color: #00D100;
 }
 
+.header-avatar {
+    max-height: 100px;
+    max-width: 100px;
+    height:auto;
+    width:auto;
+}
+
 .btn {
     color: #1d1d25;
     padding: 5px 10px;
