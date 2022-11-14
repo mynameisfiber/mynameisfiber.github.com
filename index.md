@@ -7,8 +7,7 @@ tagline: all micha all the time
 <section id="about">
     <div class="section-right offset">
         <p class="bio">
-            Former mad data scientist at <a href="//fastforwardlabs.com">fast forward labs</a> and author of <a href="http://shop.oreilly.com/product/0636920268505.do">High Performance Python</a>.
-            Formerly screaming at mean people from the podium at <a href="https://occrp.org">@occrp</a> and <a href="https://themarkup.org">@the-markup</a>. 
+            Former mad data scientist at <a href="//fastforwardlabs.com">fast forward labs</a>, author of <a href="http://shop.oreilly.com/product/0636920268505.do">High Performance Python</a> and "screaming at mean people from a podium" professional at <a href="https://occrp.org">@occrp</a> and <a href="https://themarkup.org">@the-markup</a>. 
             Currently working on the <a href="https://digitalwitnesslab.org/">Digital Witness Lab</a>.
             I spend my days moving data at light speed and my nights crusading against bad code.
             I also like building things and bikes.
