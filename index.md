@@ -11,7 +11,7 @@ tagline: all micha all the time
             Currently working on the <a href="https://digitalwitnesslab.org/">Digital Witness Lab</a>.
             I spend my days moving data at light speed and my nights crusading against bad code.
             I also like building things and bikes.
-            Can also be seen at <a rel="me" href="https://queer.party/@mynameisfiber">@mynameisfiber@queer.party</a> or <a href="https://github.com/mynameisfiber/">mynamesifber@github.com</a>.
+            Can be found at <a rel="me" href="https://queer.party/@mynameisfiber">@mynameisfiber@queer.party</a> or <a href="https://github.com/mynameisfiber/">mynamesifber@github.com</a>.
             she/her.
         </p>
     </div>
