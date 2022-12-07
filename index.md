@@ -12,7 +12,6 @@ tagline: all micha all the time
             I spend my days moving data at light speed and my nights crusading against bad code.
             I also like building things and bikes.
             Can be found at <a rel="me" href="https://queer.party/@mynameisfiber">@mynameisfiber@queer.party</a> or <a href="https://github.com/mynameisfiber/">mynamesifber@github.com</a>.
-            she/her.
         </p>
     </div>
 </section>
